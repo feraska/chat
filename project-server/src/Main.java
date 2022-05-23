@@ -23,12 +23,12 @@ public class Main {
                 }
 
                 System.out.print("Select One Option Please: ");
-                System.out.println("Working Directory = " + System.getProperty("user.dir"));
+              //  System.out.println("Working Directory = " + System.getProperty("user.dir"));
                 readLine = reader.readLine();
                 //choose option
                 switch (readLine) {
                     case "1":
-                        Server server = new Server("0.0.0.0", 80);
+                        Server server = new Server("0.0.0.0", 5000);
                         server.start();
                         break;
                     case "2":
