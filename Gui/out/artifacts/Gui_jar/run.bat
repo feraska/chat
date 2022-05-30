@@ -1,0 +1,1 @@
+java -cp Gui.jar com.example.gui.Menu

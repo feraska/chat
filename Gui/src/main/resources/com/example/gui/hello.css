@@ -1,0 +1,10 @@
+@font-face {
+    font-family: 'OpenSansEmoji';
+
+}
+
+.text-field {
+    -fx-font-family: OpenSansEmoji;
+    -fx-font-size: 32;
+
+}
