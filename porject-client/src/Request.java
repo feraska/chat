@@ -147,7 +147,10 @@ public class Request extends Thread{
     public void chat(String msg){
         try {
             command="chat";
-            writeData(command+split+msg);
+            byte[]msgBytes=msg.getBytes();
+            byte[]msgB=Base64.getEncoder().encode(msgBytes);
+            String msgStr = new String(msgB);
+            writeData(command+split+msgStr);
             //   listenMsg();
             //  close();
             // clientReader.readLine();
@@ -236,7 +239,7 @@ public class Request extends Thread{
 
 
     @Override
-    public void run() {
+    public  void run() {
         getRequest();
     }
 }
