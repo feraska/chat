@@ -89,18 +89,22 @@ public class ClientThread extends Thread {
        //     lock.lock();
             for (ClientThread clientThread:list) {
 
-               if (!clientThread.clientName.equals(clientName)) {
+             //  if (clientThread.clientName.equals(clientName)) {
                //     System.out.println(clientThread.clientName + " is connected");
                     //System.out.println(clientThread);
                     //BufferedReader reader = new BufferedReader(new InputStreamReader(soc.getInputStream()));
+               //     int index =msg.indexOf(" ");
+               //     msg="you"+msg.substring(index);
 
                     //if(soc!=socket){
 
-                    clientThread.otherWriter.println(msg);
+
                  //   System.out.println(msg);
                     ///clientThread.otherWriter.flush();
+                clientThread.otherWriter.println(msg);
                      }
-                }
+             //   clientThread.otherWriter.println(msg);
+               // }
             //list = new ArrayList<>();
            // }
             //list.clear();
@@ -177,6 +181,7 @@ public class ClientThread extends Thread {
          //   lock.unlock();
           //  System.out.println(msg);
             //while (!socket.isClosed()) {
+                msg=new String(Base64.getDecoder().decode(msg.getBytes()));
                 broadcast(clientName + "  :  " + msg);
                 broadcast(clientName+" send is "+OK);
           //  }
@@ -184,7 +189,7 @@ public class ClientThread extends Thread {
            // close();
         }
         catch (Exception e){
-        //    broadcast(clientName+" send is "+ERR);
+            broadcast(clientName+" send is "+ERR);
         }
 
           //  list.remove(this);
@@ -205,10 +210,10 @@ public class ClientThread extends Thread {
             File file = new File(file_root+"/"+getName.getName());
             Files.write(Path.of(file.getPath()),bytes);
            // writeData(OK);
-            broadcast(clientName+" Upload file "+getName.getName()+" is "+OK);
+            broadcast(clientName+" upload file "+getName.getName()+" is "+OK);
         }
         catch (Exception e){
-            broadcast(clientName+" Upload file+"+fileName+" is "+ERR);
+            broadcast(clientName+" upload file "+fileName+" is "+ERR);
         }
     }
 
@@ -220,11 +225,11 @@ public class ClientThread extends Thread {
             byte[] encoder = Base64.getEncoder().encode(bytes);
             String data = new String(encoder);
             writeData(data);
-            broadcast(clientName+" Download file "+fileName+" is "+OK);;
+            broadcast(clientName+" download file "+fileName+" is "+OK);;
 
         }
         catch (Exception e){
-            broadcast(clientName+" Download file+"+fileName+" is "+ERR);
+            broadcast(clientName+" download file+"+fileName+" is "+ERR);
         }
     }
     public void processCommand(String command){

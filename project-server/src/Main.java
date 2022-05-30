@@ -23,7 +23,7 @@ public class Main {
                 }
 
                 System.out.print("Select One Option Please: ");
-              //  System.out.println("Working Directory = " + System.getProperty("user.dir"));
+                System.out.println("Working Directory = " + System.getProperty("user.dir"));
                 readLine = reader.readLine();
                 //choose option
                 switch (readLine) {
@@ -46,8 +46,7 @@ public class Main {
         }
 
 
-        Server server = new Server("0.0.0.0", 80);
-        server.start();
+
     }
 }
 
